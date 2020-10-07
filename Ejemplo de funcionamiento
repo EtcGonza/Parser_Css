@@ -6,6 +6,7 @@ h1 {
     color: #5d84we;
     font-size: 25px;
     margin: 10px;
+		
 }
 
 Codigo Entrada:
@@ -22,8 +23,3 @@ Ejemplo con el HTML y css que esta en la carpeta PaginaWeb
 
 Codigo Entrada:
 Etiqueta: h1 | Propiedades: [(Color: red)]
-
-Css Salida: 
-h1 {
-    color: red;
-}

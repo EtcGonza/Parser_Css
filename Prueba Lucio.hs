@@ -27,8 +27,4 @@ insertarProp :: Prop1->ListProp->ListProp
 --insertarProp null = error "No se ingresaron propiedades"
 insertarProp x [] = [x]
 insertarProp x [a] = a:[x]
---insertarProp x [a:as] = a: (insertarProp as:x)
-
---let a = crearProp "Color" 123
---let b = simboloProp a
---let c = insertarProp b []
+insertarProp x (a:as) = a: (insertarProp x as)
