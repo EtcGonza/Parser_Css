@@ -12,6 +12,14 @@ h1 {
 Codigo Entrada:
 Etiqueta: div | Clase: Contenedor | Propiedades: [(Margin 0px 50px 30px 5px) , (Padding: 25px 50px), (Border 1px solid red)]
 
+
+Etiqueta: div h1| Clase: Contenedor | Propiedades: [(Margin 0px 50px 30px 5px) , (Padding: 25px 50px), (Border 1px solid red)]
+
+
+div.contenedor h1 {
+
+}
+
 Css Salida: 
 div.Contenedor {
     margin: 0px 50px 30px 5px;

@@ -1,6 +1,8 @@
 
 --data Tipo a = Clase | Id | Etiqueta deriving (Show)
-data Css a = Vacio | Elemento a (Css a ) deriving (Show)
+data Css a = Elemento a (Css a ) deriving (Show) | Prop | Vacio
+
+elemento h1 -> elemento -> elemento -> [font-size: 10px] -> Vacio
 
 -- El tipo se define como ".fondo-azul" Vacio
 gCss :: String -> Css String  -> Css String 
@@ -18,9 +20,10 @@ identificarTipo (Elemento a Vacio)
     | head( css2String (Elemento a Vacio) ) == '#' = "Id"
     | otherwise = "Etiqueta"
 
-escribirSelector :: Css String -> [Char] -> IO ()
-escribirSelector Vacio _ = putStrLn "El input es vacio, no se puede escribir."
-escribirSelector a propiedades = appendFile "style.css" (css2String (a) ++ "{" ++ propiedades ++ "}" ++ "\n")
+escribirPropiedad :: [Char] -> Css String
 
-escribirPropiedades :: [Char] -> IO ()
-escribirPropiedades propiedades = appendFile "style.txt" (propiedades ++ "\n")
+insertarPropiedad :: Css String -> Css String
+
+escribirSelector :: Css String -> IO ()
+-- escribirSelector Vacio _ = putStrLn "El input es vacio, no se puede escribir."
+-- escribirSelector a propiedades = appendFile "style.css" (css2String (a) ++ "{" ++ propiedades ++ "}" ++ "\n")
