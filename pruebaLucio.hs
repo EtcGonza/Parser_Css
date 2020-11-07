@@ -22,8 +22,7 @@ crearListaCss (Elemento a selectores) (Propiedad x propiedades) = Elemento a (cr
 --Funcion que convierte una lista CSS en codigo CSS
 generarCss :: ListCss String -> IO ()
 generarCss Vacio = putStrLn "El input es vacio, no se puede escribir."
-
---generarCss listaCSS = appendFile "style.css" (css2String (a) ++ "{" ++ propiedades ++ "}" ++ "\n")
+generarCss listaCSS = appendFile "style.css" (css2String (a) ++ "{" ++ propiedades ++ "}" ++ "\n")
 
 
 --pruebas
@@ -34,6 +33,16 @@ s3 = generarSelectores ".test" s2
 p1 = generarPropiedades "color: red" Vacio
 p2 = generarPropiedades "padding" p1
 p3 = generarPropiedades "font-size" p2
+
+listaCss1 = crearListaCss s1 p1
+listaCss2 = crearListaCss s1 p2
+listaCss3 = crearListaCss s1 p3
+listaCss4 = crearListaCss s2 p1
+listaCss5 = crearListaCss s2 p2
+listaCss6 = crearListaCss s2 p3
+listaCss7 = crearListaCss s3 p1
+listaCss8 = crearListaCss s3 p2
+listaCss9 = crearListaCss s3 p3
 
 
 --Funciones de apoyo
