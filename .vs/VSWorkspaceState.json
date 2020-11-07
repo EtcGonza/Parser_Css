@@ -3,8 +3,9 @@
     "",
     "\\eliminarTexto",
     "\\Escribir un archivo",
-    "\\Leer archivo"
+    "\\Leer archivo",
+    "\\PaginaWeb"
   ],
-  "SelectedNode": "\\Prueba Lucio.hs",
+  "SelectedNode": "\\PaginaWeb\\test.hs",
   "PreviewInSolutionExplorer": false
 }
