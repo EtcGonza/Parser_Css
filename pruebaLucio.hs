@@ -22,7 +22,7 @@ crearListaCss (Elemento a selectores) (Propiedad x propiedades) = Elemento a (cr
 --Funcion que convierte una lista CSS en codigo CSS
 generarCss :: ListCss String -> ListCss String -> IO ()
 generarCss Vacio Vacio = putStrLn "El input es vacio, no se puede escribir."
-generarCss listaSelectores listaPropiedades = appendFile "style.css" (selectores2String (listaSelectores) ++ " {" ++ "\n" ++ (propiedades2String listaPropiedades) ++ "\n" ++ "}")
+generarCss listaSelectores listaPropiedades = appendFile "style.css" (selectores2String (listaSelectores) ++ " {" ++ "\n" ++ (propiedades2String listaPropiedades) ++ "\n" ++ "}" ++ "\n\n")
 
 --Funciones de apoyo
 selectores2String :: ListCss String -> String
@@ -65,3 +65,18 @@ listaCss6 = crearListaCss s2 p3
 listaCss7 = crearListaCss s3 p1
 listaCss8 = crearListaCss s3 p2
 listaCss9 = crearListaCss s3 p3
+
+
+menu :: IO()
+menu = do putStrLn "Ingrese un selector"
+          putStrLn "h1, h2, h3"
+          s1 <- getLine
+          let listaSelectores = generarSelectores s1 Vacio
+          putStrLn "Ingrese una propiedad"
+          putStrLn "color, font-size, padding"
+          p1 <- getLine
+          let listaPropiedades = generarPropiedades p1 Vacio
+          generarCss listaSelectores listaPropiedades
+          putStrLn "Archivo creado"
+
+-- añadir dentro del bloque todo lo anterior y que al final devuelva un print con mensaje de finalizacion
