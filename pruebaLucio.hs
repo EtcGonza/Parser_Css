@@ -56,27 +56,28 @@ p1 = generarPropiedades "color: red" Vacio
 p2 = generarPropiedades "padding: 20px" p1
 p3 = generarPropiedades "font-size: 12px" p2
 
-listaCss1 = crearListaCss s1 p1
-listaCss2 = crearListaCss s1 p2
-listaCss3 = crearListaCss s1 p3
-listaCss4 = crearListaCss s2 p1
-listaCss5 = crearListaCss s2 p2
-listaCss6 = crearListaCss s2 p3
-listaCss7 = crearListaCss s3 p1
-listaCss8 = crearListaCss s3 p2
-listaCss9 = crearListaCss s3 p3
-
+-- listaCss1 = crearListaCss s1 p1
+-- listaCss2 = crearListaCss s1 p2
+-- listaCss3 = crearListaCss s1 p3
+-- listaCss4 = crearListaCss s2 p1
+-- listaCss5 = crearListaCss s2 p2
+-- listaCss6 = crearListaCss s2 p3
+-- listaCss7 = crearListaCss s3 p1
+-- listaCss8 = crearListaCss s3 p2
+-- listaCss9 = crearListaCss s3 p3
 
 menu :: IO()
-menu = do putStrLn "Ingrese un selector"
-          putStrLn "h1, h2, h3"
-          s1 <- getLine
-          let listaSelectores = generarSelectores s1 Vacio
-          putStrLn "Ingrese una propiedad"
-          putStrLn "color, font-size, padding"
-          p1 <- getLine
-          let listaPropiedades = generarPropiedades p1 Vacio
-          generarCss listaSelectores listaPropiedades
-          putStrLn "Archivo creado"
+menu = do 
+        -- putStrLn "\n--- --- --- --- --- --- Parser Css --- --- --- --- --- ---\n"
+        putStrLn "Ingrese un selector"
+        selectorIngresado <- getLine
+        putStrLn "Ingrese una propiedad para el selector"
+        propiedadIngresada <- getLine
+        generarCss (generarSelectores selectorIngresado Vacio) (generarPropiedades propiedadIngresada Vacio)
+        putStrLn "Â¿Desea ingresar otro selector? s/n"
+        opcion <- getLine
+        decision opcion
 
--- añadir dentro del bloque todo lo anterior y que al final devuelva un print con mensaje de finalizacion
+decision opcion
+     | opcion == "s" = menu
+     | opcion == "n" = putStrLn "Programa terminado"

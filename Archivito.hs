@@ -1,29 +1,34 @@
+menu :: IO ()
+menu = do
+      putStrLn . unlines $ map concatNums choices
+      choice <- getLine
+      case validate choice of
+         Just n  -> execute . read $ choice
+         Nothing -> putStrLn "Please try again"
 
---data Tipo a = Clase | Id | Etiqueta deriving (Show)
-data Css a = Elemento a (Css a ) deriving (Show) | Prop | Vacio
+      menu
+   where concatNums (i, (s, _)) = show i ++ ".) " ++ s
 
-elemento h1 -> elemento -> elemento -> [font-size: 10px] -> Vacio
+validate :: String -> Maybe Int
+validate s = isValid (reads s)
+   where isValid []            = Nothing
+         isValid ((n, _):_) 
+               | outOfBounds n = Nothing
+               | otherwise     = Just n
+         outOfBounds n = (n < 1) || (n > length choices)
 
--- El tipo se define como ".fondo-azul" Vacio
-gCss :: String -> Css String  -> Css String 
-gCss a Vacio = Elemento a Vacio
-gCss b (Elemento a element) = Elemento a (gCss b element)
+choices :: [(Int, (String, IO ()))]
+choices = zip [1.. ] [
+   ("Imprimir Hola", hola)
+ , ("Imprimir Chau", chau)
+ ]
 
-css2String :: Css String -> String
-css2String Vacio = []
-css2String (Elemento a _) = a
+execute :: Int -> IO ()
+execute n = doExec $ filter (\(i, _) -> i == n) choices
+   where doExec ((_, (_,f)):_) = f
 
-identificarTipo :: Css String -> String
-identificarTipo Vacio = error "debe ingresar un valor"
-identificarTipo (Elemento a Vacio) 
-    | head( css2String (Elemento a Vacio) ) == '.' = "Clase"
-    | head( css2String (Elemento a Vacio) ) == '#' = "Id"
-    | otherwise = "Etiqueta"
+hola :: IO ()
+hola = putStrLn "Hola"
 
-escribirPropiedad :: [Char] -> Css String
-
-insertarPropiedad :: Css String -> Css String
-
-escribirSelector :: Css String -> IO ()
--- escribirSelector Vacio _ = putStrLn "El input es vacio, no se puede escribir."
--- escribirSelector a propiedades = appendFile "style.css" (css2String (a) ++ "{" ++ propiedades ++ "}" ++ "\n")
+chau :: IO ()
+chau = putStrLn "Chau"

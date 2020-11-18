@@ -1,12 +1,61 @@
-h1 {
+/* 
+ingrese selector
+-h1
+
+¿queres ingresar otro selector mono?
+no
+
+¿Ingrese el selector para la propiedad?
+h1
+
+¿Ingrese propiedad?
+-color: blue;
+*/
+
+
+/* 
+ingrese selector
+-h1
+
+¿queres ingresar otro selector mono?
+si
+
+ingrese selector
+-h2
+
+¿queres ingresar otro selector mono?
+no
+
+¿Ingrese el selector para la propiedad?
+h1
+
+¿Ingrese propiedad?
+-color: blue;
+*/
+
+
+/* 
+Ingrese selector
+h1
+
+¿Quiere ingresar otro selector?
+Si
+
+Ingrese selector
+.zarasa
+
+ingrese propiedad
+font-size
+
+ingrese valor para la propiedad
+15px
+
+¿Quiere ingresar otra propiedad?
+Si - No
+
+¿Quiere ingresar otro modulo?
+Si - No
+*/div.texto {
  color: red;
-}
-
-sarasa {
- pruebititi;
-}
-
-h5 {
- font-size;
 }
 
